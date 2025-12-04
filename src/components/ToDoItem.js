@@ -1,0 +1,20 @@
+import DeleteIcon from '../assets/cross.svg'; 
+
+export default function ToDoItem({ todo, onRemove, onUpdate }) {
+    
+    // В будущем здесь будет логика режима редактирования
+
+    return (
+        <li key={todo.id}>
+            <div className="task__window">
+                <div className="task__window__text">
+                    <h3>{todo.title}</h3>
+                    <p>{todo.about}</p>
+                </div>
+                <button className="task__window__button__dell">
+                    <img src={DeleteIcon} />
+                </button>
+            </div>
+        </li>
+    );
+}
