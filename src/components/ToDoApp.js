@@ -1,93 +1,75 @@
-
-import { useState, useEffect } from 'react';
 import NewTaskForm from './NewTaskForm';
 import ToDoList from './ToDoList';
 import DeleteDialog from './DeleteDialog';
+import EditDialog from './EditDialog';
+import ShareDialog from './ShareDialog';
+import { useTodoLogic } from './useTodoLogic';
+import { useDialogControls } from './useDialogControls';
 
-const LOCAL_STORAGE_KEY = 'todo-items';
 
 export default function ToDoApp() {
-
-    const [todos, setTodos] = useState(() => {
-        const storedTodos = localStorage.getItem(LOCAL_STORAGE_KEY);
-        return storedTodos ? JSON.parse(storedTodos) : [];
-    });
-
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [todoToDelete, setTodoToDelete] = useState(null);
     
-    const addTask = (title, about) => {
-        if (!title || !about) return;
+    const { 
+        todos, 
+        addTask, 
+        deleteTask, 
+        updateTask 
+    } = useTodoLogic();
 
-        const newTask = {
-            id: crypto?.randomUUID() ?? Date.now().toString(), 
-            title: title,
-            about: about,
-        };
-        
-        setTodos(prevTodos => 
-            [...prevTodos, newTask]
-        ); 
+    const {
+        isDeleteModalOpen,
+        todoToDeleteId,
+        confirmRemoval,
+        cancelRemoval,
+        editingTodo,
+        startEdit,
+        finishEdit,
+        isShareModalOpen, 
+        todoToShare,     
+        startShare,      
+        cancelShare,
+    } = useDialogControls();
+
+    const handleConfirmDelete = () => {
+        deleteTask(todoToDeleteId);
+        cancelRemoval(); 
     };
 
-    useEffect(() => {
-        console.log("Сохранение задач...");
-        try {
-            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
-        } catch (error) {
-            console.error("Ошибка сохранения в LocalStorage", error);
-        }
-    }, [todos]);
-
-    const removeTask = (id) => {
-        setTodos(prevTodos => 
-            prevTodos.filter(todo => todo.id !== id)
-        );
-        setIsModalOpen(false);
-        setTodoToDelete(null);
+    const handleUpdateTask = (id, newTitle, newAbout) => {
+        updateTask(id, newTitle, newAbout);
+        finishEdit(); 
     };
 
-    const confirmRemoval = (id) => {
-        setTodoToDelete(id);
-        setIsModalOpen(true); 
-    };
-
-    const cancelRemoval = () => {
-        setIsModalOpen(false); 
-        setTodoToDelete(null); 
-    };
-
-    const updateTask = (id, newTitle, newAbout) => {
-        setTodos(prevTodos => {
-            return prevTodos.map(todo => {
-                if (todo.id === id) {
-                    return {
-                        ...todo,
-                        title: newTitle,
-                        about: newAbout
-                    };
-                }
-                return todo;
-            });
-        });
-    };
-    
     return (
         <main className="main"> 
             <NewTaskForm addTask={addTask} /> 
-            
             <ToDoList 
                 todos={todos} 
-                confirmRemoval={confirmRemoval}
-                updateTask={updateTask}
+                confirmRemoval={confirmRemoval} 
+                startEdit={startEdit} 
+                startShare={startShare}       
             />
 
-            {isModalOpen && (
-            <DeleteDialog
-                onConfirm={() => removeTask(todoToDelete)} 
-                onCancel={cancelRemoval} 
-            />
-        )}
+            {isDeleteModalOpen && (
+                <DeleteDialog
+                    onConfirm={handleConfirmDelete}
+                    onCancel={cancelRemoval} 
+                />
+            )}
+
+            {editingTodo && (
+                <EditDialog
+                    todo={editingTodo} 
+                    onSave={handleUpdateTask}
+                    onCancel={finishEdit} 
+                />
+            )}
+            {isShareModalOpen && todoToShare && (
+                <ShareDialog
+                    todo={todoToShare}
+                    onCancel={cancelShare} 
+                />
+            )}
         </main>
     );
 }
