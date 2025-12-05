@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import NewTaskForm from './NewTaskForm';
 import ToDoList from './ToDoList';
+import DeleteDialog from './DeleteDialog';
 
 const LOCAL_STORAGE_KEY = 'todo-items';
 
@@ -11,6 +12,9 @@ export default function ToDoApp() {
         const storedTodos = localStorage.getItem(LOCAL_STORAGE_KEY);
         return storedTodos ? JSON.parse(storedTodos) : [];
     });
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [todoToDelete, setTodoToDelete] = useState(null);
     
     const addTask = (title, about) => {
         if (!title || !about) return;
@@ -39,6 +43,18 @@ export default function ToDoApp() {
         setTodos(prevTodos => 
             prevTodos.filter(todo => todo.id !== id)
         );
+        setIsModalOpen(false);
+        setTodoToDelete(null);
+    };
+
+    const confirmRemoval = (id) => {
+        setTodoToDelete(id);
+        setIsModalOpen(true); 
+    };
+
+    const cancelRemoval = () => {
+        setIsModalOpen(false); 
+        setTodoToDelete(null); 
     };
 
     const updateTask = (id, newTitle, newAbout) => {
@@ -62,9 +78,16 @@ export default function ToDoApp() {
             
             <ToDoList 
                 todos={todos} 
-                removeTask={removeTask}
+                confirmRemoval={confirmRemoval}
                 updateTask={updateTask}
             />
+
+            {isModalOpen && (
+            <DeleteDialog
+                onConfirm={() => removeTask(todoToDelete)} 
+                onCancel={cancelRemoval} 
+            />
+        )}
         </main>
     );
 }
