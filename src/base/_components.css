@@ -1,0 +1,249 @@
+body {
+  background-color: #1b1a17;
+}
+.app {
+  /* background-color: #1b1a17; */
+  display: flex;
+  flex-direction: column; 
+  padding: 30px;
+  min-height: 100vh;
+  width: 100vw; 
+  box-sizing: border-box; 
+}
+
+.main {
+  width: 100%;
+}
+
+input,
+.edit__window input,
+textarea {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-radius: 5px;
+  border: 2px solid var(--color-orange);
+  width: 100%;
+  font-size: 14px;
+  padding: 8px 10px;
+  margin: 0;
+  cursor: text;
+  transition: 0.2s ease;
+}
+
+input:focus,
+textarea:focus {
+  background-color: var(--color-grey);
+  border-color: var(--color-bright-orange);
+  outline: none;
+  opacity: 1;
+}
+
+
+/* Отдельно для textarea */
+textarea {
+  height: 80%;
+  opacity: 0.6;
+  resize: none;
+  font-family: Roboto, sans-serif;
+}
+textarea:focus {
+  opacity: 1;
+}
+
+/*  Общий стиль для окон */
+.edit__window,
+.dialog__window,
+.share__window,
+.task__window {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-black);
+  border-radius: 8px;
+  padding: 15px;
+  gap: 15px;
+  box-sizing: border-box;
+  color: var(--color-white);
+}
+
+/* Окно редактирования */
+
+.edit__overlay {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.edit__window {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 50%; 
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.edit__window__buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* Диалоговое окно (удалить / подтвердить) */
+.dialog__window {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 150px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  text-align: center;
+  color: var(--color-white);
+}
+.dialog__window p {
+  margin: 0 auto;
+}
+
+.dialog__overlay {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.dialog__button__container { 
+  display: flex;
+  justify-content: center; 
+  gap: 15px; 
+}
+
+/* Карточка задачи */
+.task__window {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+  width: 100%;
+  padding: 15px 20px;
+  border: 1px solid var(--color-bright-orange);
+  border-radius: 8px;
+  gap: 10px;
+}
+
+.task__window h3 {
+  font-size: 22px;
+  font-style: medium;
+  font-weight: 500;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.task__window__text {
+  flex: 1; 
+  text-align:left;
+}
+
+.task__buttons {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%; 
+  margin-top: 10px;
+  gap: 10px;
+}
+
+
+/* Окно “Поделиться” */
+.share__window {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 80px;
+  width: 360px;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.share__overlay {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Окно “Нет задач” */
+.no__task__window {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 30px;
+  height: 200px;
+  width: 100%;
+  margin-top: 50px;
+  text-align: center;
+}
+.no__task__window div {
+  height: 5px;
+  width: 20%;
+  background-color: var(--color-bright-orange);
+  border-radius: 5px;
+}
+.no__task__window p {
+  font-size: 20px;
+  color: var(--color-white);
+}
+
+.create__new__task__box {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+  width: 100%;
+  align-items: flex-end;
+}
+
+.inputs__new__tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.todo__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.task__window__actions {
+  display: flex;      
+  flex-direction: row;   
+  align-items: center;   
+  gap: 8px;               
+}
+
+
+

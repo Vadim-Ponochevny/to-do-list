@@ -1,0 +1,161 @@
+/* Кнопка для добавления */
+.button__add {
+  height: 80px;
+  width: 80px;
+  background-color: var(--color-black);
+  color: var(--color-orange);
+  border-radius: 10px;
+  text-align: center;
+  font-size: 40px;
+  padding: 10px 10px;
+  margin: 0;
+  border: 1.5px solid var(--color-bright-orange);
+  cursor: pointer;
+}
+
+.button__add:hover {
+  background-color: var(--color-grey);
+}
+
+/* Кнопки поделиться, инфо и редактировать */
+.button__task__share,
+.button__task__info,
+.button__task__edit {
+  background-color: var(--color-black);
+  display: flex;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  width: 36px;
+  align-items: top;
+  font-size: 40px;
+  margin: 0;
+  border: 1.5px solid var(--color-bright-orange);
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--color-white);
+  font-weight: 700;
+  font-style: bold;
+  font-family: Roboto, sans-serif;
+}
+.button__task__share:active,
+.button__task__info:active,
+.button__task__edit:active {
+  background-color: var(--color-grey);
+}
+.button__task__share img,
+.button__task__info img,
+.button__task__edit img {
+  width: 60%;
+  height: 60%;
+}
+
+.button__task__share:hover,
+.button__task__info:hover,
+.button__task__edit:hover {
+  background-color: var(--color-grey);
+}
+
+/* Кнопка действия в окне */
+.button__window__action {
+  background-color: var(--color-black);
+  display: flex;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  height: 26px;
+  width: 64px;
+  align-items: top;
+  font-size: 40px;
+  margin: 0;
+  border: 1px solid var(--color-bright-orange);
+  cursor: pointer;
+  font-size: 10px;
+  color: var(--color-white);
+  font-weight: 400;
+  font-family: Roboto, sans-serif;
+}
+.button__window__action:hover {
+  border-color: var(--color-orange);
+  background-color: var(--color-grey);
+}
+
+/* Кнопка Удалить */
+.task__window__button__dell {
+  background-color: var(--color-black);
+  color: var(--color-bright-orange);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+  margin: 0; 
+  border: 1px solid var(--color-bright-orange);
+  cursor: pointer;
+}
+.task__window__button__dell img {
+  width: 50%;
+  height: 50%;
+}
+.task__window__button__dell:hover {
+  border-color: var(--color-orange);
+  background-color: var(--color-grey);
+}
+
+/* Кнопка Закрепить */
+.task__window__button__pin {
+  background-color: var(--color-black);
+  color: var(--color-bright-orange);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: auto;
+  margin: 0; 
+  border: 1px solid var(--color-bright-orange);
+  cursor: pointer;
+  transition: all 0.2s ease; 
+  font-size: 14px;
+}
+
+.task__window__button__pin:hover {
+  border-color: var(--color-orange);
+  background-color: var(--color-grey);
+}
+
+.task__window__button__pin.active {
+  background-color: var(--color-bright-orange);
+  color: var(--color-black);
+}
+
+.task__window__button__pin.active:hover {
+  background-color: var(--color-orange);
+  border-color: var(--color-black);
+}
+
+
+/* Кнопки Поделиться */
+.button__share {
+  background-color: var(--color-back);
+  border: 2px solid var(--color-bright-orange);
+  border-radius: 50%; 
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.button__share img {
+  width: 60%;
+  height: 60%;
+}
+
+.button__share:hover {
+  background-color: var(--color-grey);
+  transform: scale(1.05); 
+}
