@@ -238,4 +238,12 @@ textarea:focus {
     gap: 15px;
 }
 
+.task__window__actions {
+  display: flex;      
+  flex-direction: row;   
+  align-items: center;   
+  gap: 8px;               
+}
+
+
 

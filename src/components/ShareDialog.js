@@ -13,7 +13,11 @@ export default function ShareDialog({ onCancel }) {
     };
 
     return (
-        <div className="share__overlay" onClick={handleOverlayClick} data-js-share-dialog>
+        <div 
+            className="share__overlay" 
+            onClick={handleOverlayClick} 
+            data-js-share-dialog
+        >
             <section className="share__window">
                 
                 <button className="button__share">

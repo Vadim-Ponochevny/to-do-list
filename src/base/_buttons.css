@@ -104,6 +104,39 @@
   background-color: var(--color-grey);
 }
 
+/* Кнопка Закрепить */
+.task__window__button__pin {
+  background-color: var(--color-black);
+  color: var(--color-bright-orange);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: auto;
+  margin: 0; 
+  border: 1px solid var(--color-bright-orange);
+  cursor: pointer;
+  transition: all 0.2s ease; 
+  font-size: 14px;
+}
+
+.task__window__button__pin:hover {
+  border-color: var(--color-orange);
+  background-color: var(--color-grey);
+}
+
+.task__window__button__pin.active {
+  background-color: var(--color-bright-orange);
+  color: var(--color-black);
+}
+
+.task__window__button__pin.active:hover {
+  background-color: var(--color-orange);
+  border-color: var(--color-black);
+}
+
+
 /* Кнопки Поделиться */
 .button__share {
   background-color: var(--color-back);

@@ -1,4 +1,7 @@
-export default function DeleteDialog({ onConfirm, onCancel }) { 
+export default function DeleteDialog({ 
+    onConfirm, 
+    onCancel 
+}) { 
     return (
         <div className="dialog__overlay" >
             <section className="dialog__window">

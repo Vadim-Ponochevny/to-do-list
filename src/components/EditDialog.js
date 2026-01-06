@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
-export default function EditDialog({ todo, onSave, onCancel }) {
+export default function EditDialog({ 
+    todo, 
+    onSave, 
+    onCancel 
+}) {
 
     const [title, setTitle] = useState(todo.title);
     const [about, setAbout] = useState(todo.about);

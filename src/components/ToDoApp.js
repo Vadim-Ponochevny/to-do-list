@@ -6,14 +6,15 @@ import ShareDialog from './ShareDialog';
 import { useTodoLogic } from './useTodoLogic';
 import { useDialogControls } from './useDialogControls';
 
-
 export default function ToDoApp() {
     
     const { 
         todos, 
         addTask, 
         deleteTask, 
-        updateTask 
+        updateTask,
+        pinTask,
+        setReorderedTodos
     } = useTodoLogic();
 
     const {
@@ -47,7 +48,9 @@ export default function ToDoApp() {
                 todos={todos} 
                 confirmRemoval={confirmRemoval} 
                 startEdit={startEdit} 
-                startShare={startShare}       
+                startShare={startShare}
+                pinTask={pinTask}
+                setReorderedTodos={setReorderedTodos}       
             />
 
             {isDeleteModalOpen && (
